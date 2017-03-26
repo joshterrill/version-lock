@@ -1,0 +1,28 @@
+{
+  "name": "version-lock",
+  "version": "0.0.1",
+  "description": "a tiny script that looks at what versions of every package you have in your package.json and writes them into your package.json",
+  "bin": {
+    "version-lock": "./index.js"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshterrill/version-lock.git"
+  },
+  "keywords": [
+    "version",
+    "lock",
+    "npm",
+    "package"
+  ],
+  "author": "Josh Terrill",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joshterrill/version-lock/issues"
+  },
+  "homepage": "https://github.com/joshterrill/version-lock#readme"
+}
