@@ -1,12 +1,15 @@
+#!/usr/bin/env node
 var pkg = require('./package.json');
 var fs = require('fs');
 var path = require('path');
+var currentDir = path.dirname(require.main.filename);
 // check if package.json exists
-fs.exists('./package.json', function(dir) {
+fs.exists(`${currentDir}/package.json`, function(dir) {
   if (!dir) throw 'Cannot find ./package.json file';
   // check if node_modules exists
-  fs.exists('./node_modules', function(dir) {
+  fs.exists(`${currentDir}/node_modules`, function(dir) {
     if (!dir) throw 'Cannot find ./node_modules/ directory';
+    // check if dependencies exist
     if (pkg.dependencies) {
       var pkgDependencies = Object.getOwnPropertyNames(pkg.dependencies);
       // loop over dependencies
@@ -16,7 +19,7 @@ fs.exists('./package.json', function(dir) {
         pkg['dependencies'][prop] = version;
       });
     }
-
+    // check if devDependencies exists
     if (pkg.devDependencies) {
       var pkgDevDependencies = Object.getOwnPropertyNames(pkg.devDependencies);
       // loop over dev dependencies
@@ -26,8 +29,7 @@ fs.exists('./package.json', function(dir) {
         pkg['devDependencies'][prop] = version;
       });
     }
-    
     // write the pkg variable out to package.json
-    fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 2) , 'utf-8');
+    fs.writeFileSync(`${currentDir}/package.json`, JSON.stringify(pkg, null, 2) , 'utf-8');
   });
 });
