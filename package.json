@@ -1,6 +1,6 @@
 {
   "name": "version-lock",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "a tiny script that looks at what versions of every package you have in your package.json and writes them into your package.json",
   "bin": {
     "version-lock": "./index.js"
